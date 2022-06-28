@@ -1,6 +1,8 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
   name: my-app-3
   namespace: argocd
   finalizers:
@@ -14,3 +16,8 @@ spec:
     path: argocd/my-apps/app-3
     repoURL: https://github.com/mehmetmgrsl/test-argocd.git
     targetRevision: main
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+  
