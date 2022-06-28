@@ -1,3 +1,3 @@
 # Example Assets
 
-Repo for keeping example assets for blog, etc.
+This repo has been cloned from https://gitlab.com/ayush-sharma/example-assets
