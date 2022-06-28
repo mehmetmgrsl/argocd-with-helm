@@ -12,5 +12,5 @@ spec:
   project: default
   source:
     path: argocd/my-apps/app-3
-    repoURL: https://github.com/mehmetmgrsl/test-argocd
+    repoURL: https://github.com/mehmetmgrsl/test-argocd.git
     targetRevision: main
