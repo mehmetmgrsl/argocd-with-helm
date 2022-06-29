@@ -1,4 +1,9 @@
-# Example Assets
+# Test argocd
+
+1. kubectl apply -f argocd-cm.yaml
+
+2. kubectl apply -f my-apps.yaml
+
 
 This repo has been cloned from https://gitlab.com/ayush-sharma/example-assets
 
