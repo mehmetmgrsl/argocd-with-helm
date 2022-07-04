@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
+  name: nginx-helm-2
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: default
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: .
+    repoURL: https://github.com/mehmetmgrsl/helm-chart-nginx.git
+    targetRevision: HEAD
+    helm:
+      valueFiles:
+        - values.yaml
+      externalValueFiles:
+        - repoURL: https://github.com/mehmetmgrsl/test-argocd.git
+          targetRevision: main
+          valueFiles:
+            - helm-values.yaml       
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true      
