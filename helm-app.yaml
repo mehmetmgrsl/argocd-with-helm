@@ -16,14 +16,27 @@ spec:
     path: .
     repoURL: https://github.com/mehmetmgrsl/helm-chart-nginx.git
     targetRevision: HEAD
-    helm:
-      valueFiles:
-        - values.yaml
-      externalValueFiles:
-        - repoURL: https://github.com/mehmetmgrsl/test-argocd.git
-          targetRevision: main
-          valueFiles:
-            - helm-values.yaml       
+
+    #helm:
+      #valueFiles:
+        #- values.yaml
+      #externalValueFiles:
+        #- repoURL: https://github.com/mehmetmgrsl/test-argocd.git
+          #targetRevision: main
+          #valueFiles:
+            #- helm-values.yaml
+
+
+    #helm:
+      #version: v3
+      #values: |
+         #{{ .Files.Get "helm-values.yaml" | indent 8 }}
+      #repoURL: https://github.com/mehmetmgrsl/test-argocd.git
+      #targetRevision: main
+
+
+
+
   syncPolicy:
     automated:
       prune: true
