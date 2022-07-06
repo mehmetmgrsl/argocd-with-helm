@@ -14,8 +14,6 @@ spec:
   project: default
   source:
     path: .
-    targetRevision: HEAD
-
     helm:
        values: {{ toYaml .Values.custom.values | indent 8 }}
 
