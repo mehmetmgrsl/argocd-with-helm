@@ -18,7 +18,7 @@ spec:
        values: {{ toYaml .Values.custom.values | indent 8 }}
 
     repoURL:  https://github.com/mehmetmgrsl/helm-chart-nginx.git
-    targetRevision: main
+    targetRevision: master
 
   syncPolicy:
     automated:
