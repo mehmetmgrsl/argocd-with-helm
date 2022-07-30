@@ -1,30 +1,37 @@
 apiVersion: argoproj.io/v1alpha1
-kind: Application
+kind: ApplicationSet
 metadata:
-  name: root-dev-pod22
+  name: root-dev-pod02
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  project: default
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: argocd
-  source:
-    path: other
-    repoURL: https://github.com/mehmetmgrsl/test-argocd.git
-    targetRevision: main
+  generators:
+  - git:
+      directories:
+      - path: 'other/*'
+      - path: other/pods
+        exclude: true  
 
-    directory:
-      ## exclude the pods directory
-      exclude: /pods/*
-    helm:
-      values: |
-        pod:
-          name: pod2
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-    syncOptions:
-    - CreateNamespace=true
+  template:
+    metadata:
+      name: '{{path.basename}}'
+    spec:
+      project: "default"
+      source:
+        repoURL: https://github.com/mehmetmgrsl/test-argocd.git
+        targetRevision: main
+        path: '{{path}}'
+        helm:
+          values: |
+            pod:
+              name: pod2
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{path.basename}}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+        - CreateNamespace=true
