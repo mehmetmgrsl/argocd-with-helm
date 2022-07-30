@@ -11,8 +11,7 @@ spec:
       repoURL: https://github.com/mehmetmgrsl/test-argocd.git
       revision: multi-app  
       directories:
-      - path: '/'      
-      - path: '*'
+      - path: other  
       - path: pods
         exclude: true 
   template:
