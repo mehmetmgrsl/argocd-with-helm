@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: root-dev-pod-82
+  name: root-dev-pod-822
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -11,13 +11,13 @@ spec:
       repoURL: https://github.com/mehmetmgrsl/test-argocd.git
       revision: multi-app
       directories:
-      - path: "*"      
+      - path: other  
       - path: pods
         exclude: true 
 
   template:
     metadata:
-      name: root-dev-pod-82
+      name: root-dev-pod-822
     spec:
       project: "default"
       source:
