@@ -22,7 +22,7 @@ spec:
       project: "default"
       source:
         repoURL: https://github.com/mehmetmgrsl/test-argocd.git
-        revision: main
+        targetRevision: main
         path: '{{path}}'
         helm:
           values: |
