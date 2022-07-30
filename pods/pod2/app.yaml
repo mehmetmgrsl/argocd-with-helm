@@ -30,7 +30,7 @@ spec:
               name: pod2
       destination:
         server: https://kubernetes.default.svc
-        namespace: '{{path.basename}}'
+        namespace: argocd
       syncPolicy:
         automated:
           prune: true
