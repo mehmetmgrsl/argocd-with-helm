@@ -1,6 +1,0 @@
----
-apiVersion: "v1"
-name: "pods"
-version: "0.0.1"
-description: "A Helm chart for catering multiple environments"
-appVersion: "0.0.1"
