@@ -8,6 +8,8 @@ metadata:
 spec:
   generators:
   - git:
+      repoURL: https://github.com/mehmetmgrsl/test-argocd.git
+      targetRevision: main  
       directories:
       - path: 'other/*'
       - path: other/pods
