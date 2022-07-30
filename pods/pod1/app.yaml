@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: root-dev-pod002
+  name: root-dev-pod0001
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -9,12 +9,11 @@ spec:
   generators:
   - git:
       repoURL: https://github.com/mehmetmgrsl/test-argocd.git
-      revision: main
+      revision: main  
       directories:
-      - path: 'other/*'
-      - path: other/pods
-        exclude: true  
-
+      - path: '*'
+      - path: pods
+        exclude: true 
   template:
     metadata:
       name: '{{path.basename}}'
@@ -27,7 +26,7 @@ spec:
         helm:
           values: |
             pod:
-              name: pod2
+              name: pod1
       destination:
         server: https://kubernetes.default.svc
         namespace: '{{path.basename}}'
