@@ -1,12 +1,12 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: root-dev-pod2
+  name: root-dev-pod22
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  project: develop
+  project: default
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
@@ -17,7 +17,7 @@ spec:
 
     directory:
       ## exclude the pods directory
-      exclude: pods
+      exclude: /pods/*
     helm:
       values: |
         pod:
