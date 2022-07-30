@@ -11,10 +11,11 @@ spec:
       repoURL: https://github.com/mehmetmgrsl/test-argocd.git
       revision: main  
       directories:
-      - path: 'other/*'
-      - path: other/pods
+      - path: '*'
+      - path: pods
         exclude: true  
-
+      - path: argocd
+        exclude: true  
   template:
     metadata:
       name: '{{path.basename}}'
