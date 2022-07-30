@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: common
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  project: develop
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+  source:
+    repoURL: https://github.com/mehmetmgrsl/helm-chart-nginx.git
+    path: appchart
+    targetRevision: master
+    helm:
+      values: |
+         {{ range .Files.Lines "pods/{{ .Values.pod.name }}/values.yaml" }}
+         {{ . }}{{ end }}
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
