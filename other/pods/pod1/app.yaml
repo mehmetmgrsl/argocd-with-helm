@@ -9,7 +9,7 @@ spec:
   generators:
   - git:
       repoURL: https://github.com/mehmetmgrsl/test-argocd.git
-      targetRevision: main  
+      revision: main  
       directories:
       - path: 'other/*'
       - path: other/pods
@@ -22,7 +22,7 @@ spec:
       project: "default"
       source:
         repoURL: https://github.com/mehmetmgrsl/test-argocd.git
-        targetRevision: main
+        revision: main
         path: '{{path}}'
         helm:
           values: |
