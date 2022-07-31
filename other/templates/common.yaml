@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: {{ .Values.pod.name }}-n
+  name: {{ .Values.pod.name }}-common
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
@@ -16,7 +16,7 @@ spec:
     targetRevision: master
     helm:
       values: |-
-         {{ range .Files.Lines "pods/{{ .Values.pod.name }}/values.yaml" }}
+         {{ range .Files.Lines "../pods/{{ .Values.pod.name }}/values.yaml" }}
          {{ . }}{{ end }}
   syncPolicy:
     automated:
