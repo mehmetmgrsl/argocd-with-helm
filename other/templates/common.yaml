@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: common
+  name: {{ .Values.pod.name }}-common
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
@@ -15,9 +15,12 @@ spec:
     path: appchart
     targetRevision: master
     helm:
-      values: |
-         {{ range .Files.Lines "pods/{{ .Values.pod.name }}/values.yaml" }}
-         {{ . }}{{ end }}
+      values: |-
+
+           {{- $filename := printf "%s%s%s" "pods/" .Values.pod.name "/values.yaml" -}}
+           {{ range .Files.Lines $filename }}
+           {{ . }}{{ end }}
+
   syncPolicy:
     automated:
       prune: true
