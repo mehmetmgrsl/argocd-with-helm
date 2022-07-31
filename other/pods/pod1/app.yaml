@@ -24,7 +24,7 @@ spec:
         targetRevision: multi-app
         path: '{{path}}'
         helm:
-          values: |-
+          values: |
             pod:
               name: pod1
       destination:
