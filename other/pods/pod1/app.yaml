@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: root-dev-pod11
+  name: root-dev-pod01
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -17,7 +17,8 @@ spec:
 
     directory:
       ## exclude the pods directory
-      exclude: /pods/*
+      include: other
+      exclude: pods
     helm:
       values: |
         pod:
