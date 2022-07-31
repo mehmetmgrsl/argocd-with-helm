@@ -17,8 +17,7 @@ spec:
     helm:
       values: |-
 
-           {{- $podname := .Values.pod.name -}} 
-           {{- $filename := "pods/" + .Values.pod.name + "/values.yaml" -}}
+           {{- $filename := printf "%s%s%s" "pods/" .Values.pod.name "/values.yaml" -}}
            {{ range .Files.Lines $filename }}
            {{ . }}{{ end }}
 
