@@ -1,2 +1,3 @@
-pod: 
-  name: pod333
+values: |
+   pod: 
+     name: pod333

@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: root-dev-pod-311
+  name: root-dev-pod-911
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -16,7 +16,7 @@ spec:
         exclude: true 
   template:
     metadata:
-      name: root-dev-pod-311
+      name: root-dev-pod-911
     spec:
       project: "default"
       source:
