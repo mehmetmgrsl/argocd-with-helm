@@ -17,7 +17,7 @@ spec:
 
     directory:
       ## exclude the pods directory
-      include: other
+      include: '*'
       exclude: pods
     helm:
       values: |
