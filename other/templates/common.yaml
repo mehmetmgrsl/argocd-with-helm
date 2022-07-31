@@ -16,8 +16,12 @@ spec:
     targetRevision: master
     helm:
       values: |-
-         {{ range .Files.Lines "pods/pod2/values.yaml" }}
-         {{ . }}{{ end }}
+         {{ range .Files.Lines pods/{{ .Values.pod.name }}/values.yaml }}
+         {{ . }}{{ end }}    
+    #helm:
+      #values: |-
+         #{{ range .Files.Lines "pods/pod2/values.yaml" }}
+         #{{ . }}{{ end }}
      #helm:
       #values: |-
         # {{ $podname := .Values.pod.name  }}
