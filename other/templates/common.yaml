@@ -16,7 +16,7 @@ spec:
     targetRevision: master
     helm:
       values: |-
-         {{ range .Files.Lines "pods/pod1/values.yaml" }}
+         {{ range .Files.Lines "pods/{{ .Values.pod.name }}/values.yaml" }}
          {{ . }}{{ end }}
   syncPolicy:
     automated:
