@@ -8,11 +8,11 @@ metadata:
 spec:
   generators:
   - git:
-      repoURL: https://github.com/mehmetmgrsl/test-argocd.git
+      repoURL: https://github.com/mehmetmgrsl/test-argocd.git 
       revision: multi-app  
       directories:
-      - path: other  
-      - path: pods
+      - path: other/*  
+      - path: pods/*
         exclude: true 
   template:
     metadata:
