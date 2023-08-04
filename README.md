@@ -1,5 +1,3 @@
-# Test argocd
-
 
 1. kubectl create namespace argocd
 
